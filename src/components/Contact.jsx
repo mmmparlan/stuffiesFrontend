@@ -5,7 +5,10 @@ export default function Contact(){
 
     return (
         <>
-            <h1>Contacts Page</h1>
+            <h3>Presented by:</h3>
+            <h1>SkyLett's Studio</h1>
+            {""}
+            <h2>email: skylettsstudio@gmail.com</h2>
         </>
     )
 }
