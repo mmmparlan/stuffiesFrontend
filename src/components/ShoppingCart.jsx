@@ -5,9 +5,12 @@ export default function ShoppingCart({usernameLogIn,setUsernameLogIn,passwordLog
 
     return (
         <>
-        <div className="loginMyCartWindow">
+        <div className="myCartWindow">
             <h3 className="shoppingCartHeading">Shopping Cart</h3>
             {""}
+            <div className="myCartItems">
+
+            </div>
             
         </div>
         </>

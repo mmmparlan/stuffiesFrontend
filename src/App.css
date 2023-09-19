@@ -44,7 +44,12 @@
 
 
 .navBarBox{
+  position:fixed;
+  top: 15px;
+  left: 40px;
+  right: 40px;
   
+
   background-color: rgb(252, 169, 245);
   font-size: 25px;
   height: auto;
@@ -77,14 +82,23 @@
   padding-left: 15px;
   padding-right: 15px;
 
-  background-color: rgb(193, 238, 254);
+  /* background-color: rgb(193, 238, 254); */
   border-radius: 13px;
   border: 5px solid #8d9596;
   place-items: center;
 
+  background-image: url('./models/mainBackground2.png');
+  background-repeat: no-repeat;
+
+  /* cover, contain, auto,  */
+  background-size: cover; 
+  background-attachment: fixed;
+  overflow-x: hidden;
+  overflow-y: auto;
+
 }
 
-.loginMyCartWindow {
+.myCartWindow {
   position: fixed;
   right:40px;
   top: 100px;
@@ -94,6 +108,55 @@
   background-color: rgb(131, 251, 251);
   width: 275px;
   /* visibility: hidden; */
+  background-image: url('./models/myCart2Background.jpg');
+  background-repeat: no-repeat;
+
+  /* cover, contain, auto,  */
+  background-size: cover; 
+  /* background-attachment: fixed; */
+}
+.myCartItems{
+  margin-top: 125px;
+}
+.loginWindow {
+  position: fixed;
+  right:40px;
+  top: 100px;
+  bottom: 40px;
+  border-radius: 13px;
+  border: 3px solid #8f9e9f;
+  background-color: rgb(131, 251, 251);
+  width: 275px;
+  /* visibility: hidden; */
+  background-image: url('./models/loginBackground.jpg');
+  background-repeat: no-repeat;
+
+  /* cover, contain, auto,  */
+  background-size: cover; 
+  /* background-attachment: fixed; */
+}
+.loginForm{
+  margin-top: 125px;
+}
+.signUpWindow {
+  position: fixed;
+  right:40px;
+  top: 100px;
+  bottom: 40px;
+  border-radius: 13px;
+  border: 3px solid #8f9e9f;
+  background-color: rgb(131, 251, 251);
+  width: 275px;
+  /* visibility: hidden; */
+  background-image: url('./models/signUpBackground.jpg');
+  background-repeat: no-repeat;
+
+  /* cover, contain, auto,  */
+  background-size: cover; 
+  /* background-attachment: fixed; */
+}
+.signUpForm{
+  margin-top: 125px;
 }
 .shoppingCartHeading{
   margin-top: 0px;
@@ -104,7 +167,13 @@
 .signUpHeading{
   margin-top: 0px;
 }
-
+.logoutButton{
+  margin-top: 150px;
+  border: 2px solid gray;
+}
+.alreadySignedUp{
+  margin-top: 150px;
+}
 input[type=text] {
   width: 90%;
   margin: 2px 10px;
@@ -122,4 +191,143 @@ input[type=password] {
   border-bottom: 2px solid blue;
   background-color: rgb(243, 210, 251);
   font-size: 25px;
+}
+
+.stuffiesArrayView{
+  position:fixed;
+  top: 150px;
+  left: 100px;
+  right: 100px;
+  bottom: 100px;
+  
+  padding-left: 15px;
+  padding-right: 15px;
+
+  /* background-color: rgb(193, 238, 254); */
+  border-radius: 13px;
+  border: 5px solid #8d9596;
+
+  /* display: inline-flex; */
+
+  overflow-x: hidden;
+  overflow-y: auto;
+display: inline-block;
+}
+
+.stuffiesTileView{
+  width: 300px;
+  height: 450px;
+  border-radius: 9px;
+  border: 2px solid #8d9596;
+  /* padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px; */
+  margin: 30px;
+  display:inline-block;
+
+  background-repeat: no-repeat;
+   
+}
+
+.singleViewButton{
+  margin-top:380px;
+  z-index: +1;
+}
+
+
+.centerView{
+
+margin-top: 20%;
+}
+/* 
+.stuffyImg{
+margin-top:10px;
+width: 300px;
+height: 450px;
+} */
+
+.singleStuffyView{
+  background-color: rgb(99, 180, 241);
+  position:sticky;
+  top: 30px;
+  /* right: auto; */
+  /* bottom: auto; */
+  /* left: auto; */
+  width: 800px;
+  height: 500px;
+  border-radius: 9px;
+  border: 3px solid #8d9596;
+  display: inline-flex;
+
+}
+
+.closeWindow{
+  position:absolute;
+  top: 3px;
+  right: 3px;
+  
+}
+/* button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+} */
+
+
+.singleStuffyImage{
+  position:absolute;
+  top:25px;
+  left:25px;
+  width:750px;
+  height:450px;
+  
+  background-repeat: no-repeat;
+}
+
+.singleStuffyTableDiv{
+  background-color: rgb(196, 230, 255);
+  position:absolute;
+  top:25px;
+  right:25px;
+  bottom: 25px;
+  left:425px;
+  width: 350px;
+  height: 450px;
+  
+}
+
+.singleStuffyTable {
+  position:absolute;
+  bottom:25px;
+  border: 1px solid;
+  width: 100%;
+}
+.nameCell{
+  border: 1px solid;
+}
+.priceCell{
+  border: 1px solid;
+}
+.sizeCell{
+  border: 1px solid;
+}
+.colorsCell{
+  border: 1px solid;
+}
+.buttonCell{
+  border:1px solid;
 }
