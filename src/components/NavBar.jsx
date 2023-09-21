@@ -14,6 +14,7 @@ export default function NavBar(){
     const [usernameLogIn,setUsernameLogIn] = useState("");
     const [passwordLogIn,setPasswordLogIn] = useState("");
     const [token,setToken] = useState("");
+    const [stuffiesObj,setStuffiesObj] = useState([""]);
 
     return (
         <>
@@ -33,7 +34,9 @@ export default function NavBar(){
         <p></p>
         <Routes className='navBarRoutes'>
             <Route path='/Home.jsx' element={<Home />} />
-            <Route path='/Shop.jsx' element={<Shop />} />
+            <Route path='/Shop.jsx' element={<Shop 
+            stuffiesObj={stuffiesObj}
+            setStuffiesObj={setStuffiesObj}  />} />
             <Route path='/Contact.jsx' element={<Contact />} />
             <Route path='/Login.jsx' element={<Login 
             token={token}

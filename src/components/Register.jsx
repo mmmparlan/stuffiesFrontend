@@ -5,8 +5,10 @@ function AlreadySignedUp({token}){
     if (token){
         return(
             <>
-            <div className="loginMyCartWindow">
-            <h3>you're already signed up!</h3>
+            <div className="signUpWindow">
+                <h1></h1>
+                <h1></h1>
+            <h2 className="alreadySignedUp" >you're already signed up!</h2>
             </div>
             </>
         )
@@ -30,10 +32,10 @@ function ShowSignUp({token,usernameLogIn,setUsernameLogIn,passwordLogIn,setPassw
     if (!token){
         return(
             <>
-            <div className="loginMyCartWindow">
+            <div className="signUpWindow">
             <h3 className="signUpHeading">Sign Up!</h3>
-            {""}
-            <form onSubmit={handleSubmit}>
+            
+            <form className="signUpForm" onSubmit={handleSubmit}>
             <label className="username">Username</label>
             <input 
                 className="usernameField"

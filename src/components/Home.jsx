@@ -5,6 +5,7 @@ export default function Home(){
 
     return (
         <>
+            <div className="centerView">
             <h1>Welcome</h1>
             {""}
             <h2>Make sure you checkout</h2>
@@ -12,6 +13,7 @@ export default function Home(){
             <h2>our Shop!</h2>
             {""}
             <h2>And don't forget to login</h2>
+            </div>
         </>
     )
 }
