@@ -4,6 +4,7 @@ import NavBar from './components/NavBar'
 
 function App() {
 
+console.log("rendering App component")
 
   return (
     <>
