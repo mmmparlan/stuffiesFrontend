@@ -1,8 +1,8 @@
 import { useState,useEffect } from 'react';
 import {registerUser} from '../api/index'
 
-function AlreadySignedUp({token}){
-    if (token){
+function AlreadySignedUp({usernameObj,tokenObj}){
+    if (usernameObj){
         return(
             <>
             <div className="signUpWindow">
@@ -15,8 +15,8 @@ function AlreadySignedUp({token}){
     }
 }
 
-function ShowSignUp({token,usernameLogIn,setUsernameLogIn,passwordLogIn,setPasswordLogIn,setUsrname,setPsword}){
-    if (token){return;}
+function ShowSignUp({usernameObj,tokenObj,usernameLogIn,setUsernameLogIn,passwordLogIn,setPasswordLogIn,setUsrname,setPsword}){
+    if (usernameObj){return;}
 
     function handleSubmit(event){
         event.preventDefault();
@@ -29,7 +29,7 @@ function ShowSignUp({token,usernameLogIn,setUsernameLogIn,passwordLogIn,setPassw
 
     };
 
-    if (!token){
+    if (!tokenObj.token){
         return(
             <>
             <div className="signUpWindow">
@@ -42,8 +42,8 @@ function ShowSignUp({token,usernameLogIn,setUsernameLogIn,passwordLogIn,setPassw
                 type="text" 
                 value={usernameLogIn}
                 onChange={(e) => setUsernameLogIn(e.target.value)} />
-                <p></p>
-                <label className="password">Password</label>  
+            <p></p>
+            <label className="password">Password</label>  
             <input 
                 className="passwordField"
                 type="password" 
@@ -62,19 +62,20 @@ function ShowSignUp({token,usernameLogIn,setUsernameLogIn,passwordLogIn,setPassw
 }
 
 
-export default function Register({token,setToken,usernameLogIn,setUsernameLogIn,passwordLogIn,setPasswordLogIn}) {
+export default function Register({usernameObj,setUsernameObj,tokenObj,setTokenObj,usernameLogIn,setUsernameLogIn,passwordLogIn,setPasswordLogIn}) {
     const [usrname,setUsrname] = useState(null);
     const [psword,setPsword] = useState(null);
 
     useEffect(()=>{
-        if (token){return;}
+        if (tokenObj){return;}
         if (usrname && psword){
             async function createUserAccount(){
                 try {
                     const response = await registerUser(usrname,psword);
                     const result = response;
                     console.log(result.token);
-                    setToken(result.token);
+                    setTokenObj(result.token);
+                    setUsernameObj(result.user.username)
                     setUsernameLogIn("");
                     setPasswordLogIn("");
                     console.log(`this is now usernameLogIn: ${usernameLogIn}`)
@@ -93,11 +94,14 @@ export default function Register({token,setToken,usernameLogIn,setUsernameLogIn,
 
     return(
         <>
-        <AlreadySignedUp 
-        token={token} />
+        <AlreadySignedUp
+        usernameObj={usernameObj} 
+        tokenObj={tokenObj} />
 
         <ShowSignUp 
-        token={token} 
+        usernameObj={usernameObj}
+        setUsernameObj={setUsernameObj}
+        tokenObj={tokenObj} 
         setUsrname={setUsrname} 
         usrname={usrname} 
         setPsword={setPsword}

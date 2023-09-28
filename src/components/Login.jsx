@@ -2,43 +2,57 @@ import {useState, useEffect} from 'react'
 import {loginUser} from '../api/index'
 
 
-function ShowLogIn({loginUsername,setLoginUsername,loginPassword,setLoginPassword,token,setToken,usernameLogIn,setUsernameLogIn,passwordLogIn,setPasswordLogIn}){
-    if (token){return;}
-
+function ShowLogIn({setUserIdObj,usernameObj,setUsernameObj,loginUsername,setLoginUsername,loginPassword,setLoginPassword,tokenObj,setTokenObj,usernameLogIn,setUsernameLogIn,passwordLogIn,setPasswordLogIn}){
+    if (usernameObj){return;}
+    const [runUseEffect,setRunUseEffect] = useState(false);
     useEffect(()=>{
-        if(token){return}
-        async function logUser(){
-            try {
-                const response = await loginUser(loginUsername,loginPassword);
-                const result = response;
-                console.log(result.token);
-                //setToken(result.token);
-                setToken(result);
-                setUsernameLogIn("");
-                setPasswordLogIn("");
-            } catch (err) {
-                console.error(err)
+         if(runUseEffect === true){
+            async function logUser(){
+                try {
+                    const response = await loginUser(loginUsername,loginPassword);
+                    // const result = response;
+                    if (response.token){
+                    const result = response;
+                    await setTokenObj(result);
+                    console.log('console.log response.token')
+                    console.log(`this is response.token ${response.token}`);
+                    await setTokenObj(response.token);
+                    await setUsernameObj(response.user.username)
+                    await setUserIdObj(response.user.id)
+                    console.log(response.user.id)
+                    console.log(`this is result.user.username ${response.user.username}`)
+                    console.log(`${usernameObj}`)
+                    console.log(tokenObj)
+                    setUsernameLogIn("");
+                    setPasswordLogIn("");
+                    }
+                    
+                } catch (err) {
+                    console.error(err)
+                }
             }
-        }
+            
         logUser();
+         }
+
     },[loginUsername,loginPassword]);
 
-    function handleSubmit(event){
-        event.preventDefault();
+    function handleSubmit(e){
+        e.preventDefault();
         console.log('login handleSubmit click')
         console.log(usernameLogIn)
         console.log(`username: ${usernameLogIn}`)
         console.log(`password: ${passwordLogIn}`)
         setLoginUsername(usernameLogIn);
         setLoginPassword(passwordLogIn);
-    };
-
+        setRunUseEffect(true)
+    }
     return(
         <>
         <div className="loginWindow">
         <h3 className="memberLogInHeading">Member Log In</h3>
         {""}
-        <form className="loginForm" onSubmit={handleSubmit}>
+        <form className="loginForm" onSubmit={(e) => {handleSubmit(e)}}>
             <label className="username">Username</label>
             <input 
                 className="usernameField"
@@ -64,15 +78,17 @@ function ShowLogIn({loginUsername,setLoginUsername,loginPassword,setLoginPasswor
     )
 }
 
-function AlreadyLoggedIn({token,setToken,setLoginUsername,setLoginPassword}){
-    if (!token){return;};
+function AlreadyLoggedIn({usernameObj,setUsernameObj,tokenObj,setTokenObj,setLoginUsername,setLoginPassword}){
+    if (!usernameObj){return;};
 
     function handleClick(event){
         event.preventDefault();
         console.log("handleClick clicked, trying to log out user");
-        setToken("");
+        setTokenObj("");
+        setUsernameObj("");
         setLoginUsername("");
         setLoginPassword("");
+        
     }
     
         return(
@@ -87,21 +103,27 @@ function AlreadyLoggedIn({token,setToken,setLoginUsername,setLoginPassword}){
 }
 
 
-export default function Login({token,setToken,usernameLogIn,setUsernameLogIn,passwordLogIn,setPasswordLogIn}){
+export default function Login({userIdObj,setUserIdObj,usernameObj,setUsernameObj,tokenObj,setTokenObj,usernameLogIn,setUsernameLogIn,passwordLogIn,setPasswordLogIn}){
 const [loginUsername,setLoginUsername] = useState("");
 const [loginPassword,setLoginPassword] = useState("");
-    
+    console.log('Login component rendering and Login useState just set to default ')
     return (
         <>
-        <AlreadyLoggedIn 
-        token={token} 
-        setToken={setToken}
+        <AlreadyLoggedIn
+        usernameObj={usernameObj}
+        setUsernameObj={setUsernameObj} 
+        tokenObj={tokenObj} 
+        setTokenObj={setTokenObj}
         setLoginUsername={setLoginUsername}
         setLoginPassword={setLoginPassword} />
 
         <ShowLogIn 
-        token={token}
-        setToken={setToken}
+        userIdObj={userIdObj}
+        setUserIdObj={setUserIdObj}
+        usernameObj={usernameObj}
+        setUsernameObj={setUsernameObj}
+        tokenObj={tokenObj}
+        setTokenObj={setTokenObj}
         usernameLogIn={usernameLogIn}
         setUsernameLogIn={setUsernameLogIn}
         passwordLogIn={passwordLogIn}

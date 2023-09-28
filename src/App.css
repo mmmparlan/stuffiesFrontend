@@ -68,7 +68,7 @@
 .loginCart {
   align-items: right;
   margin-right: 0px;
-  z-index: +1;
+  /* z-index: +1; */
   
 }
 
@@ -99,8 +99,8 @@
 }
 
 .myCartWindow {
-  position: fixed;
-  right:40px;
+  position: absolute;
+  right:15px;
   top: 100px;
   bottom: 40px;
   border-radius: 13px;
@@ -114,6 +114,9 @@
   /* cover, contain, auto,  */
   background-size: cover; 
   /* background-attachment: fixed; */
+  /* overflow-x: hidden;
+  overflow-y: auto; */
+  display: inline-block;
 }
 .myCartItems{
   margin-top: 125px;
@@ -211,11 +214,11 @@ input[type=password] {
 
   overflow-x: hidden;
   overflow-y: auto;
-display: inline-block;
+  display: inline-block;
 }
 
 .stuffiesTileView{
-  width: 300px;
+  width: 350px;
   height: 450px;
   border-radius: 9px;
   border: 2px solid #8d9596;
@@ -262,12 +265,12 @@ height: 450px;
 
 }
 
-.closeWindow{
+/* .closeWindow{
   position:absolute;
   top: 3px;
   right: 3px;
-  
-}
+  border-radius: 35px;
+} */
 /* button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -313,8 +316,37 @@ button:focus-visible {
 .singleStuffyTable {
   position:absolute;
   bottom:25px;
-  border: 1px solid;
+  /* border: 1px solid; */
   width: 100%;
+}
+.reviewsWindow{
+  position:absolute;
+  top:50px;
+  bottom:200px;
+  border-bottom: 1px solid;
+  border-top: 1px solid;
+  width: 100%;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: block;
+}
+.singleReviewBox{
+  border-bottom: 1px solid;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.reviewButtons{
+  position: absolute;
+  top: 14px;
+  right: 1px;
+  width: 350px;
+  display:flex;
+  justify-content: space-evenly;
+}
+.reviewBox{
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 .nameCell{
   border: 1px solid;
@@ -331,3 +363,123 @@ button:focus-visible {
 .buttonCell{
   border:1px solid;
 }
+.stuffyIdCell{
+  border:1px solid;
+}
+.quantityCell{
+  border:1px solid;
+}
+.qtyCell{
+  border:1px solid;
+  height: 25px;
+  width: 100%;
+  display: flex;
+}
+.reviewFormWindow{
+  z-index: +1;
+  position:absolute;
+  top:0px;
+  right:0px;
+  bottom:200px;
+  left:0px;
+  background-color: aliceblue;
+  border:1px solid;
+  display: inline-block;
+}
+.closeReviewWindow{
+  position:absolute;
+  top: 3px;
+  right:3px;
+}
+.reviewForm{
+  position:absolute;
+  top:60px;
+  border-top: 15px;
+}
+.submitFormButton{
+  position:absolute;
+  top:150px;
+  left:156px;
+}
+textarea{
+  position: absolute;
+  top:0px;
+  left: 7px;
+  right:5px;
+  width: 325px;
+  background-color:rgb(199, 234, 244);
+}
+
+.cartItemsBox{
+  /* z-index: +1; */
+  /* position:absolute;
+  top:200px;
+  left: 0px;
+  right:0px;
+  bottom:20px; */
+  width: 275px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: inline-block;
+}
+.cartItemsTable{
+  /* position: absolute;
+  top:5px; */
+  width: 100%;
+  
+}
+.showCartItemsDiv{
+  position:absolute;
+  bottom: 20px;
+  top: 200px;
+  right:0px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: inline-block;
+}
+.idAndNameBox{
+  border-top: 1px black solid;
+  margin-left: 15px;
+  margin-right: 15px;
+  /* width: 100%; */
+
+  display: flex;
+
+}
+.priceAndQtyBox{
+  border-bottom: 1px black solid;
+  margin-left: 15px;
+  margin-right: 15px;
+  height: 30px;
+  /* width: 100%; */
+  display: flex;
+  flex: 1;
+}
+.nameBox{
+  margin-left: 25px;
+  float:right
+}
+.qtyBox{
+  display:flex;
+}
+.qty{
+  margin-left: 30px;
+}
+.subOne{
+  border:1px rgb(207, 248, 249) solid;
+  /* border-radius: 15px; */
+}
+.plusOne{
+  border:1px rgb(207, 248, 249) solid;
+  /* border-radius: 15px; */
+}
+.updateCartBox{
+  border:1px rgb(207, 248, 249) solid;
+}
+/* .buyNowButton{
+  position: absolute;
+  top:300px;
+  z-index: +2;
+
+  
+} */
